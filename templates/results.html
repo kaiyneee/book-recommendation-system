@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рекомендации</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #7f8c8d;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+        .book-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .book-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: #ecf0f1;
+            border-left: 5px solid #3498db;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-btn">← Назад к поиску</a>
+        
+        <h2>Рекомендации для книги: "{{ original_book }}"</h2>
+        
+        {% if recommendations %}
+        <ol class="book-list">
+            {% for book in recommendations %}
+            <li class="book-item">{{ book }}</li>
+            {% endfor %}
+        </ol>
+        {% else %}
+        <p>Рекомендации не найдены 😔</p>
+        {% endif %}
+    </div>
+</body>
+</html>

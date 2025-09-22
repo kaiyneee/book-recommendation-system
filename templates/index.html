@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .search-form {
+            display: flex;
+            gap: 10px;
+            margin: 30px 0;
+        }
+        input, select, button {
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+        input, select {
+            flex: 1;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .book-list {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Рекомендательная система книг</h1>
+        <p>Выберите книгу, которая вам понравилась, и получите рекомендации:</p>
+        
+        <form action="/recommend" method="POST" class="search-form">
+            <select name="book_title" required>
+                <option value="">-- Выберите книгу --</option>
+                {% for title in book_titles %}
+                <option value="{{ title }}">{{ title }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Найти рекомендации</button>
+        </form>
+        
+        <p><small>Или введите название книги вручную:</small></p>
+        <form action="/recommend" method="POST" class="search-form">
+            <input type="text" name="book_title" placeholder="Введите название книги..." required>
+            <button type="submit">Найти рекомендации</button>
+        </form>
+    </div>
+</body>
+</html>
